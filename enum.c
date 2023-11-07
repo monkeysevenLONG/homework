@@ -3,8 +3,8 @@
 enum color { red, green, blue };
 char name[][10] ={
 	"red",
-		"green",
-		"blue"
+	"green",
+	"blue"
 };
 int main()
 {
