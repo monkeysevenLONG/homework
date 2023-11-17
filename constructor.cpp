@@ -1,53 +1,43 @@
 #include <iostream>
+
+#include <string>
+
 using namespace std;
 
-class counter {
+class Student {
 private:
-	int value;
+	char* name;
+	int score;
 public:
-	counter(void);
-	~counter(void);
-	void inc(void);
-	void dec(void);
-	int getvalue(void);
+	Student(char* n, int s);
+	~Student();
+	void show(void);
 };
 
-counter::counter(void)
+void Student::show()
 {
-	value = 0;
-	cout << "counter initialized\n";
+	cout << "name:" << name << " score：" << score <<endl;
 }
 
-counter::~counter(void)
+Student::Student(char* n, int s)
 {
-	cout << "counter destroyed\n";
+	name = new char[strlen(n) + 1];
+	strcpy(name,n);
+
+	score = s;
+
+	cout << "Object intialized." << endl;
 }
 
-void counter::inc(void)
+Student::~Student()
 {
-	value++;
+	delete name;
+	cout << "Object destroyed." << endl;
 }
 
-void counter::dec(void)
+int main()
 {
-	value--;
-}
-
-int counter::getvalue(void)
-{
-	return value;
-}
-
-
-int main(void)
-{
-	counter counter1, counter2;
-	counter1.inc();
-	counter2.dec();
-
-	cout << "the value of counter1=" << counter1.getvalue() << "\n";
-	cout << "the value of counter1=" << counter2.getvalue()<< "\n";
-
+	Student student1((char*)"yujingchuan", 99);
+	student1.show();
 	return 0;
 }
-
